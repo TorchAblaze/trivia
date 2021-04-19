@@ -1,0 +1,22 @@
+html {
+  box-sizing: border-box;
+}
+
+.my-border {
+  border: 2px solid black;
+  width: 18rem;
+  margin: 1rem auto;
+  min-height: 10rem;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+
+.my-border:hover {
+  background: lightslategray;
+  color: #eee;
+  cursor: pointer;
+}
+
+.back {
+  display: none;
+}
