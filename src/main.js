@@ -29,6 +29,7 @@ $(document).ready(() => {
       }
       // now we can get key/values for each one...
       html += `<div class="card my-border front ${triviaElement.id}">`;
+      html += `<div><h5>Category: ${triviaElement.category.title}</h5></div>`;
       html += triviaElement.question;
       html += "</div>";
       html += `<div class="card my-border back ${triviaElement.id}">`;
@@ -40,29 +41,21 @@ $(document).ready(() => {
 });
 
 $(".results").on("click", "div", function () {
-  const id = this.classList[this.classList.length - 1];
-  $(`.${id}`).toggle();
-});
+  const aud = document.getElementById("theme");
+  console.log(aud);
+  if (aud.currentTime > 0) {
+    // then it is playing, stop it
+    aud.pause();
+    aud.currentTime = 0;
+  } else {
+    aud.play();
+  }
 
-// http://jservice.io/api/random?count=10
-// [
-//   {
-//       "id": 11729,
-//       "answer": "Thomas Wolfe",
-//       "question": "\"The Lost Boy\", a novella by this \"Look Homeward, Angel\" author, wasnt published in full until 1992",
-//       "value": 500,
-//       "airdate": "1993-12-31T12:00:00.000Z",
-//       "created_at": "2014-02-11T22:53:18.552Z",
-//       "updated_at": "2014-02-11T22:53:18.552Z",
-//       "category_id": 1328,
-//       "game_id": null,
-//       "invalid_count": null,
-//       "category": {
-//           "id": 1328,
-//           "title": "in the bookstore",
-//           "created_at": "2014-02-11T22:53:18.143Z",
-//           "updated_at": "2014-02-11T22:53:18.143Z",
-//           "clues_count": 35
-//       }
-//   }
-// ]
+  const currentSide = this.classList[this.classList.length - 2];
+  const id = this.classList[this.classList.length - 1];
+  if (currentSide === "front") {
+    $(`.front.${id}`).fadeToggle(() => $(`.back.${id}`).fadeToggle());
+  } else {
+    $(`.back.${id}`).fadeToggle(() => $(`.front.${id}`).fadeToggle());
+  }
+});

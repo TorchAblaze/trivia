@@ -7,13 +7,19 @@
     <title>Trivia</title>
   </head>
   <body>
-    <div class="container">
-      <div class="jumbotron">
+    <div class="container-fluid main">
+      <div class="header text-uppercase text-center">
         <h1>This, Is, Jquereopardy!</h1>
       </div>
-      <!-- <div class="card my-border front">Front</div>
-      <div class="card my-border back">Back</div> -->
-      <div class="results"></div>
+      <div class="results p-2 row"></div>
+    </div>
+    <div>
+      <audio id="theme">
+        <source
+          src="https://ia800302.us.archive.org/3/items/JeopardyTheme/Jeopardy.mp3"
+          type="audio/mpeg"
+        />
+      </audio>
     </div>
   </body>
 </html>
